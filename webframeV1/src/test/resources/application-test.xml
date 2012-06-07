@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<context:component-scan base-package="cn.ilongfei.quickweb"/>
+	
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="true" />
+				<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+			</props>
+		</property>
+		<property name="persistenceUnitName" value="jpa.sample" />
+		
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<jpa:repositories base-package="cn.ilongfei.quickweb.repository"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="org.h2.Driver" />
+			<property name="url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
+			<property name="username" value="sa" />
+			<property name="password" value="" />
+		
+			<!-- Connection Pooling Info -->
+			<property name="maxActive" value="40" />
+			<property name="maxIdle" value="5" />
+			<property name="defaultAutoCommit" value="false" />
+			<!-- 连接Idle一个小时后超时 -->
+			<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+			<property name="minEvictableIdleTimeMillis" value="3600000" />
+			
+			
+		</bean>
+
+</beans>
