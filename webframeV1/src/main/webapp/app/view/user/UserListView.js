@@ -11,13 +11,20 @@ Ext.define('webframe.view.user.UserListView' ,{
         {header: '名', dataIndex: 'lastname'}
     ],
     tbar : [
-    	{text:'增加',action:'add',tooltip:'增加记录',icon: 'resources/icons/fam/add.gif', cls: 'x-btn-text-icon'},
+    	{text:'增加',action:'add',tooltip:'增加记录',iconCls: 'icon-add'},
     	'-',
-    	{text:'修改',action:'update',tooltip:'修改选中记录',icon: 'resources/icons/fam/folder_wrench.png', cls: 'x-btn-text-icon'},
+    	{text:'修改',action:'update',tooltip:'修改选中记录',iconCls: 'icon-update'},
     	'-',
-    	{text:'删除',action:'del',tooltip:'删除选中记录',icon: 'resources/icons/fam/delete.gif', cls: 'x-btn-text-icon'},
+    	{text:'删除',action:'del',tooltip:'删除选中记录',iconCls: 'icon-delete'},
     	'-',
-    	{text:'查询',action:'query',tooltip:'条件查询',icon: 'resources/icons/fam/application_view_list.png', cls: 'x-btn-text-icon'}
-    ]
+    	{text:'查询',action:'query',tooltip:'条件查询',iconCls: 'icon-query'}
+    ],
+    // paging bar on the bottom
+    bbar: Ext.create('Ext.PagingToolbar', {
+        store: this.store, 
+        displayInfo: true,
+        displayMsg: 'Displaying topics {0} - {1} of {2}',
+        emptyMsg: "No topics to display"
+        })
 });
 

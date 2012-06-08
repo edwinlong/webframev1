@@ -70,7 +70,7 @@ public class UserController {
 	}
 	
 	// create user
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public User create() {
 		User user = null;
@@ -78,7 +78,7 @@ public class UserController {
 	}
 
 	// update user info by id, 未完，怎样从很中获取对象？
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseBody
 	public User update() {
 		User user = null;

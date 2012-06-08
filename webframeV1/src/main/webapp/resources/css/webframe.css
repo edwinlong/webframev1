@@ -1,0 +1,19 @@
+.icon-user {
+    background-image: url(../icons/fam/user.gif) !important;
+}
+
+.icon-add {
+    background-image: url(../icons/fam/add.gif) !important;
+}
+
+.icon-delete {
+    background-image: url(../icons/fam/delete.gif) !important;
+}
+
+.icon-update {
+    background-image: url(../icons/fam/folder_wrench.png) !important;
+}
+
+.icon-query {
+    background-image: url(../icons/fam/application_view_list.png) !important;
+}
