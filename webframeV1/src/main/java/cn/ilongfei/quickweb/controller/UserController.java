@@ -47,7 +47,7 @@ public class UserController {
 			user.setUsername("username" + i);
 			user = userService.save(user);
 		}
-		return "Init test data successed！";
+		return "Init test data successed!";
 	}
 	
 	// get all users
