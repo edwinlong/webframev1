@@ -17,6 +17,11 @@ Ext.define('webframe.view.user.UserEdit', {
                 items: [
                     {
                         xtype: 'textfield',
+                        name : 'id',
+                        fieldLabel: 'id',
+                        hidden: true
+                    },{
+                        xtype: 'textfield',
                         name : 'username',
                         fieldLabel: 'userName'
                     },

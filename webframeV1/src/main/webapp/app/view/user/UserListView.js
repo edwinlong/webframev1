@@ -19,12 +19,17 @@ Ext.define('webframe.view.user.UserListView' ,{
     	'-',
     	{text:'查询',action:'query',tooltip:'条件查询',iconCls: 'icon-query'}
     ],
-    // paging bar on the bottom
-    bbar: Ext.create('Ext.PagingToolbar', {
-        store: this.store, 
-        displayInfo: true,
-        displayMsg: 'Displaying topics {0} - {1} of {2}',
-        emptyMsg: "No topics to display"
-        })
+    
+    
+    initComponent: function() { 
+        this.bbar = Ext.create('Ext.PagingToolbar', { 
+            store: this.store,
+            displayInfo: true,
+            displayMsg: 'Displaying topics {0} - {1} of {2}',
+            emptyMsg: "No topics to display"
+        });
+        this.callParent();
+    }
+
 });
 

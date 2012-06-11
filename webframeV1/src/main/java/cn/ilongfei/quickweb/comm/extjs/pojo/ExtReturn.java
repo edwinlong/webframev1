@@ -1,5 +1,12 @@
 package cn.ilongfei.quickweb.comm.extjs.pojo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.data.domain.Page;
+
 /**
  * Ext Ajax返回对象
  * 
@@ -8,111 +15,65 @@ package cn.ilongfei.quickweb.comm.extjs.pojo;
  */
 public class ExtReturn {
 	
-	public static ExtReturn SUCCESS = new ExtReturn(true,"操作成功");
-	public static ExtReturn FAILURE = new ExtReturn(false,"操作失败");
-
-	public ExtReturn() {
+	public static String SUCCESS_MDG = "操作成功";
+	public static String FAILURE_MDG = "操作失败";
+	
+	
+	public static Map<String,Object> mapOK(Page page){
+		Map<String,Object> modelMap = new HashMap<String,Object>(1);
+		modelMap.put("success", true);
+		modelMap.put("data", page.getContent());
+		modelMap.put("size", page.getSize());
+		modelMap.put("number", page.getNumber());
+		modelMap.put("totalPages", page.getTotalPages());
+		modelMap.put("numberOfElements", page.getNumberOfElements());
+		modelMap.put("totalElements", page.getTotalElements());
+		modelMap.put("firstPage", page.isFirstPage());
+		modelMap.put("lastPage", page.isLastPage());
+		return modelMap;
 	}
-
-	/**
-	 * 是否更新成功的构造方法
-	 * 
-	 * @param success
-	 *            是否成功
-	 * @param msg
-	 *            消息
-	 */
-	public ExtReturn(boolean success, Object msg) {
-		this.success = success;
-		this.msg = msg;
-		this.o="";
+	
+	public static Map<String,Object> mapOK(){
+		Map<String,Object> modelMap = new HashMap<String,Object>(1);
+		modelMap.put("success", true);
+		return modelMap;
 	}
-
-	/**
-	 * 是否更新成功的构造方法
-	 * 
-	 * @param success
-	 *            是否成功
-	 * @param msg
-	 *            消息
-	 * @param other
-	 *            其他对象
-	 */
-	public ExtReturn(boolean success, Object msg, Object other) {
-		this.success = success;
-		this.msg = msg;
-		this.o = other;
+	
+	//操作成功，返回单个对象，自动封装成List
+	public static Map<String,Object> mapOK(Object data){
+		ArrayList list = new ArrayList();
+		list.add(data);
+		return mapOK(list, list.size());
 	}
-
+	
 	/**
-	 * 异常时的构造方法
-	 * 
-	 * @param msg
-	 *            异常消息
+	 * Generates modelMap to return in the modelAndView
+	 * @param contacts
+	 * @return
 	 */
-	public ExtReturn(Object errormsg) {
-		// 异常情况
-		this.success = false;
-		this.msg = errormsg;
-		this.o = "";
+	public static Map<String,Object> mapOK(List data, int total){
+		
+		Map<String,Object> modelMap = new HashMap<String,Object>(3);
+		modelMap.put("totalElements", total);
+		modelMap.put("data", data);
+		modelMap.put("success", true);
+		
+		return modelMap;
 	}
+	
+	/**
+	 * Generates modelMap to return in the modelAndView in case
+	 * of exception
+	 * @param msg message
+	 * @return
+	 */
+	public static Map<String,Object> mapError(String msg){
 
-	/**
-	 * 是否成功
-	 */
-	private boolean success;
-	/**
-	 * 返回消息
-	 */
-	private Object msg;
-	/**
-	 * 其他对象
-	 */
-	private Object o;
+		Map<String,Object> modelMap = new HashMap<String,Object>(2);
+		modelMap.put("message", msg);
+		modelMap.put("success", false);
 
-	/**
-	 * @return 是否成功
-	 */
-	public boolean isSuccess() {
-		return success;
-	}
-
-	/**
-	 * @param success
-	 *            是否成功
-	 */
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
-
-	/**
-	 * @return 返回消息
-	 */
-	public Object getMsg() {
-		return msg;
-	}
-
-	/**
-	 * @param msg
-	 *            返回消息
-	 */
-	public void setMsg(Object msg) {
-		this.msg = msg;
-	}
-
-	/**
-	 * @return 其他对象
-	 */
-	public Object getO() {
-		return o;
-	}
-
-	/**
-	 * @param o
-	 *            其他对象
-	 */
-	public void setO(Object o) {
-		this.o = o;
-	}
+		return modelMap;
+	} 
 
 }

@@ -70,20 +70,36 @@ Ext.define('webframe.controller.UserCtrl', {
         });
     },
     addHandler : function(){
-    	alert('add');    	
+    	var emptyUser = new webframe.model.User({
+    		username:'lllfff'
+    	});
+    	this.showEditWin(emptyUser);
+    },
+    getListViewSelection: function(){
+    	var selection = this.getUserlistview().getSelectionModel().getSelection()[0];
+        return selection;
     },
     delHandler : function(){
-    	alert('del');    	
+    	var selection = this.getListViewSelection();
+        if (selection) {
+            this.getUserStoreStore().remove(selection);
+        }	
+        this.getUserStoreStore().sync();
     },
     updateHandler : function(){
-    	alert('update');    	
+    	var selection = this.getListViewSelection();
+    	if (selection) {
+            this.showEditWin(selection);
+        }
     },
     queryHandler : function(){
     	alert('query');    	
     },
     editRecord: function(grid, record) {
+        this.showEditWin(record);
+    },
+    showEditWin: function(record) {
         var edit = Ext.create('webframe.view.user.UserEdit').show();
-
         edit.down('form').loadRecord(record);
     },
     updateRecord: function(button) {
@@ -91,10 +107,16 @@ Ext.define('webframe.controller.UserCtrl', {
             form   = win.down('form'),
             record = form.getRecord(),
             values = form.getValues();
-
-        record.set(values);
+		if (values.id > 0){
+			record.set(values);
+		} else{
+			record = Ext.create('webframe.model.User');
+			record.set(values);
+			//record.setId(0);
+			this.getUserStoreStore().add(record);
+		}
         win.close();
-        this.getUsersStore().sync();
+        this.getUserStoreStore().sync();
     }
 });
 
