@@ -1,6 +1,6 @@
 Ext.define('webframe.model.User', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'username', 'firstname','lastname'],
+    fields: ['id', 'account', 'password','realName','sex','email','mobile','officePhone','errorCount','lastLoginTime','lastLoginIp','remark'],
     proxy: {
         type: 'rest',
         url: 'user',

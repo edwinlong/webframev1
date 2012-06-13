@@ -6,9 +6,9 @@ Ext.define('webframe.view.user.UserListView' ,{
     store: 'UserStore',
     columns: [
         {header: '用户编码',  dataIndex: 'id'},
-        {header: '用户名', dataIndex: 'username'},
-        {header: '姓', dataIndex: 'firstname'},
-        {header: '名', dataIndex: 'lastname'}
+        {header: '用户名', dataIndex: 'account'},
+        {header: '姓', dataIndex: 'realName'},
+        {header: '名', dataIndex: 'email'}
     ],
     tbar : [
     	{text:'增加',action:'add',tooltip:'增加记录',iconCls: 'icon-add'},

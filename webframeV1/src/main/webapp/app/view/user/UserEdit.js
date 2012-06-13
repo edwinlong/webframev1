@@ -22,18 +22,18 @@ Ext.define('webframe.view.user.UserEdit', {
                         hidden: true
                     },{
                         xtype: 'textfield',
-                        name : 'username',
-                        fieldLabel: 'userName'
+                        name : 'account',
+                        fieldLabel: 'account'
                     },
                     {
                         xtype: 'textfield',
-                        name : 'firstname',
-                        fieldLabel: 'firstname'
+                        name : 'realName',
+                        fieldLabel: 'realName'
                     },
                     {
                         xtype: 'textfield',
-                        name : 'lastname',
-                        fieldLabel: 'lastname'
+                        name : 'email',
+                        fieldLabel: 'email'
                     }
                 ]
             }
