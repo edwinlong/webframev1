@@ -2,7 +2,6 @@ package cn.ilongfei.quickweb.controller;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +16,9 @@ import cn.ilongfei.quickweb.comm.extjs.pojo.ExtReturn;
 import cn.ilongfei.quickweb.service.AbstractService;
 
 
-public abstract class AbstractController<T, S extends AbstractService> {
-	@Autowired
-	S modelService;
+public abstract class AbstractController<T> {
+	
+	protected AbstractService<T> modelService;
 
 	//list page
 	//extjs grid 的分页从1开始，后台是从0开始，这里要把传过来的参数-1
@@ -39,7 +38,7 @@ public abstract class AbstractController<T, S extends AbstractService> {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String,Object> getUserById(@PathVariable Long id) {
-		T model = (T)modelService.get(id); 
+		T model = modelService.get(id); 
 		return ExtReturn.mapOK(model);
 	}
 	
@@ -47,7 +46,7 @@ public abstract class AbstractController<T, S extends AbstractService> {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> create(@RequestBody  T model) {
-		T _model = (T)modelService.save(model);
+		T _model = modelService.save(model);
 		return ExtReturn.mapOK(_model);
 	}
 
@@ -55,7 +54,7 @@ public abstract class AbstractController<T, S extends AbstractService> {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseBody
 	public Map<String,Object> update(@PathVariable Long id, @RequestBody  T model) {
-		T _model = (T)modelService.save(model);
+		T _model = modelService.save(model);
 		return ExtReturn.mapOK(_model);
 	}
 

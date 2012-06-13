@@ -10,9 +10,11 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 			<!-- Connection Info -->
-			<property name="driverClassName" value="org.h2.Driver" />
-			<property name="url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
-			<property name="username" value="sa" />
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property name="url" value="jdbc:mysql://localhost/webframe?useUnicode=true" />
+			<!-- <property name="url" value="jdbc:mysql://localhost/webframe?useUnicode=true&characterEncoding=utf-8" />
+			--> 
+			<property name="username" value="root" />
 			<property name="password" value="" />
 		
 			<!-- Connection Pooling Info -->
@@ -22,8 +24,6 @@
 			<!-- 连接Idle一个小时后超时 -->
 			<property name="timeBetweenEvictionRunsMillis" value="3600000" />
 			<property name="minEvictableIdleTimeMillis" value="3600000" />
-			
-			
-		</bean>
+	</bean>
 
 </beans>

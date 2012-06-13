@@ -1,6 +1,7 @@
 package cn.ilongfei.quickweb.comm.extjs.pojo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,12 +18,18 @@ public class ExtReturn {
 	
 	public static String SUCCESS_MDG = "操作成功";
 	public static String FAILURE_MDG = "操作失败";
+	public static final Map<String,Object> MAPNULL = new HashMap<String,Object>(3);
 	
+	static{
+		MAPNULL.put("totalElements", 0);
+		MAPNULL.put("data", Collections.EMPTY_LIST);
+		MAPNULL.put("success", true);
+	}
 	
 	public static Map<String,Object> mapOK(Page page){
 		Map<String,Object> modelMap = new HashMap<String,Object>(1);
 		modelMap.put("success", true);
-		modelMap.put("data", page.getContent());
+		modelMap.put("data", page.getContent()==null? Collections.EMPTY_LIST :page.getContent());
 		modelMap.put("size", page.getSize());
 		modelMap.put("number", page.getNumber());
 		modelMap.put("totalPages", page.getTotalPages());
@@ -41,9 +48,10 @@ public class ExtReturn {
 	
 	//操作成功，返回单个对象，自动封装成List
 	public static Map<String,Object> mapOK(Object data){
+		if(data ==null)return MAPNULL;
 		ArrayList list = new ArrayList();
 		list.add(data);
-		return mapOK(list, list.size());
+		return mapOK(list, 1);
 	}
 	
 	/**

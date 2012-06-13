@@ -1,9 +1,9 @@
 /*
 *商品store
 */
-Ext.define('webframe.store.UserStore', {
+Ext.define('webframe.store.DataDicts', {
     extend: 'Ext.data.Store',
-    model: 'webframe.model.User',
+    model: 'webframe.model.DataDict',
     pageSize: 10,
     //autoSync: true,
     autoLoad: true,

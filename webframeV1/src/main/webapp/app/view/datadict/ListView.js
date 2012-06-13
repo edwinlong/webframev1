@@ -1,14 +1,17 @@
-Ext.define('webframe.view.user.UserListView' ,{
+Ext.define('webframe.view.datadict.ListView' ,{
     extend: 'Ext.grid.Panel',
-    alias : 'widget.userlistview',
-    title : '用户列表',
+    alias : 'widget.ddlistview',
+    title : '系统数据字典',
     //model: 'User',
-    store: 'UserStore',
+    store: 'DataDicts',
     columns: [
-        {header: '用户编号',  dataIndex: 'id'},
-        {header: '登录名', dataIndex: 'account'},
-        {header: '姓名', dataIndex: 'realName'},
-        {header: '邮箱', dataIndex: 'email'}
+        {header: '编号',  dataIndex: 'id'},
+        {header: 'field', dataIndex: 'field'},
+        {header: 'fieldName', dataIndex: 'fieldName'},
+        {header: 'valueField', dataIndex: 'valueField'},
+        {header: 'displayField', dataIndex: 'displayField'},
+        {header: 'enabled', dataIndex: 'enabled'},
+        {header: 'sort', dataIndex: 'sort'}
     ],
     tbar : [
     	{text:'增加',action:'add',tooltip:'增加记录',iconCls: 'icon-add'},

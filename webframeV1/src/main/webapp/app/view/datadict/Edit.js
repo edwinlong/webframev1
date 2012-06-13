@@ -1,7 +1,7 @@
-Ext.define('webframe.view.user.UserEdit', {
+Ext.define('webframe.view.datadict.Edit', {
     extend: 'Ext.window.Window',
-    alias : 'widget.useredit',
-    title : '编辑用户',
+    alias : 'widget.ddedit',
+    title : '数据字典-编辑数据',
     autoShow: false,
     height: 200,
     width: 300,
@@ -22,18 +22,33 @@ Ext.define('webframe.view.user.UserEdit', {
                         hidden: true
                     },{
                         xtype: 'textfield',
-                        name : 'account',
-                        fieldLabel: '登录名'
+                        name : 'field',
+                        fieldLabel: 'field'
                     },
                     {
                         xtype: 'textfield',
-                        name : 'realName',
-                        fieldLabel: '姓名'
+                        name : 'fieldName',
+                        fieldLabel: 'fieldName'
                     },
                     {
                         xtype: 'textfield',
-                        name : 'email',
-                        fieldLabel: '邮箱'
+                        name : 'valueField',
+                        fieldLabel: 'valueField'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name : 'displayField',
+                        fieldLabel: 'displayField'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name : 'enabled',
+                        fieldLabel: 'enabled'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name : 'sort',
+                        fieldLabel: 'sort'
                     }
                 ]
             }

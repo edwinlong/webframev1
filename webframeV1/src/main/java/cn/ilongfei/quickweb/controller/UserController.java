@@ -12,11 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.ilongfei.quickweb.model.User;
+import cn.ilongfei.quickweb.repository.UserRepository;
 import cn.ilongfei.quickweb.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends AbstractController<User, UserService> {
+public class UserController extends AbstractController<User> {
+	@Autowired
+	public void setUserService(UserService service){
+		modelService = service;
+	}
+	
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserController.class);
 
