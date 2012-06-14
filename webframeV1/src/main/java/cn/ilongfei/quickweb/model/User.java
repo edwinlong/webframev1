@@ -1,11 +1,13 @@
 package cn.ilongfei.quickweb.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -32,21 +34,26 @@ public class User extends AbstractPersistable<Long> {
 	private String remark;
 	
 	@ManyToMany
-	/*@CollectionId(
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	//javax.persistence.GenerationType
+	/*@javax.persistence..SequenceGenerator(
+			name="<logical sequence name>",
+			sequenceName="<actual database object name>")*/
+	@CollectionId(
 	    columns = @Column(name = "id"),
 	    type = @org.hibernate.annotations.Type(type = "long"),
-	    generator = "auto"
-	)*/
+	    generator = "increment"
+	)
 	@JoinTable(
 	    name = "UserRole",
 	    joinColumns = {@JoinColumn(name = "userId")},
 	    inverseJoinColumns = {@JoinColumn(name = "roleId")}
 	)
-	private Set<Role> roles = new HashSet<Role>();
-	public Set<Role> getRoles() {
+	private Collection<Role> roles = new ArrayList<Role>();
+	public Collection<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
 	public String getAccount() {

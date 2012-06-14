@@ -1,13 +1,15 @@
 package cn.ilongfei.quickweb.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.CollectionId;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -18,22 +20,22 @@ public class Role extends AbstractPersistable<Long> {
 	private String roleDesc;
 	
 	@ManyToMany
-	/*@CollectionId(
+	@CollectionId(
 	    columns = @Column(name = "id"),
 	    type = @org.hibernate.annotations.Type(type = "long"),
-	    generator = "auto"
-	)*/
+	    generator = "increment"
+	)
 	@JoinTable(
 	    name = "RoleModule",
 	    joinColumns = {@JoinColumn(name = "roleId")},
 	    inverseJoinColumns = {@JoinColumn(name = "moduleId")}
 	)
-	private Set<Module> modules = new HashSet<Module>();
+	private Collection<Module> modules = new ArrayList<Module>();
 	
-	public Set<Module> getModules() {
+	public Collection<Module> getModules() {
 		return modules;
 	}
-	public void setModules(Set<Module> modules) {
+	public void setModules(Collection<Module> modules) {
 		this.modules = modules;
 	}
 	public String getRoleName() {
