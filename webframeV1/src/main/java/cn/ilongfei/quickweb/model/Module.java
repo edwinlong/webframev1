@@ -11,7 +11,7 @@ public class Module extends AbstractPersistable<Long> {
 	private static final long serialVersionUID = 5932141516258870364L;
 	private String moduleName;
 	private String moduleUrl;
-	private Integer parentId;
+	private Long parentId;
 
 	/**
 	 * 叶子节点(0:树枝节点;1:叶子节点)
@@ -64,11 +64,11 @@ public class Module extends AbstractPersistable<Long> {
 		this.moduleUrl = moduleUrl;
 	}
 
-	public Integer getParentId() {
+	public Long getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(Integer parentId) {
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 

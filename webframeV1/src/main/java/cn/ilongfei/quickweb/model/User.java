@@ -1,10 +1,16 @@
 package cn.ilongfei.quickweb.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.CollectionId;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -25,6 +31,24 @@ public class User extends AbstractPersistable<Long> {
 	private String lastLoginIp;
 	private String remark;
 	
+	@ManyToMany
+	/*@CollectionId(
+	    columns = @Column(name = "id"),
+	    type = @org.hibernate.annotations.Type(type = "long"),
+	    generator = "auto"
+	)*/
+	@JoinTable(
+	    name = "UserRole",
+	    joinColumns = {@JoinColumn(name = "userId")},
+	    inverseJoinColumns = {@JoinColumn(name = "roleId")}
+	)
+	private Set<Role> roles = new HashSet<Role>();
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 	public String getAccount() {
 		return account;
 	}

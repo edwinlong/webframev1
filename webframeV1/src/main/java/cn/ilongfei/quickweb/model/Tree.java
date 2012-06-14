@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Tree implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	private Long id;
 	private String text;
 	private String iconCls;
 	private boolean expanded;
@@ -17,11 +17,11 @@ public class Tree implements Serializable {
 	private String url;
 	private List<Tree> children;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

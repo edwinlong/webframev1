@@ -14,6 +14,31 @@
     background-image: url(../icons/fam/folder_wrench.png) !important;
 }
 
-.icon-query {
-    background-image: url(../icons/fam/application_view_list.png) !important;
-}
+.icon-computer{background-image:url(../images/icons/computer.png)!important;background-repeat:no-repeat;}
+.icon-home{background-image:url(../images/icons/house.png)!important;background-repeat:no-repeat;}
+.icon-cancel{background-image:url(../images/icons/cancel.png)!important;background-repeat:no-repeat;}
+.icon-key{background-image:url(../images/icons/key.png)!important;background-repeat:no-repeat;}
+.icon-save{background-image:url(../images/icons/save.png)!important;background-repeat:no-repeat;}
+.icon-modify{background-image:url(../images/icons/edit.png)!important;background-repeat:no-repeat;}
+.icon-user_add{background-image:url(../images/icons/user_add.png)!important;background-repeat:no-repeat;}
+.icon-user_delete{background-image:url(../images/icons/user_delete.png)!important;background-repeat:no-repeat;}
+.icon-user_edit{background-image:url(../images/icons/user_edit.png)!important;background-repeat:no-repeat;}
+.icon-user_go{background-image:url(../images/icons/user_go.png)!important;background-repeat:no-repeat;}
+.icon-system_settings{background-image:url(../images/icons/cog.png)!important;background-repeat:no-repeat;}
+.icon-role{background-image:url(../images/icons/group.png)!important;background-repeat:no-repeat;}
+.icon-role_add{background-image:url(../images/icons/group_add.png)!important;background-repeat:no-repeat;}
+.icon-role_delete{background-image:url(../images/icons/group_delete.png)!important;background-repeat:no-repeat;}
+.icon-role_edit{background-image:url(../images/icons/group_edit.png)!important;background-repeat:no-repeat;}
+.icon-role_save{background-image:url(../images/icons/group_go.png)!important;background-repeat:no-repeat;}
+.icon-reset_pwd{background-image:url(../images/icons/arrow_redo.png)!important;background-repeat:no-repeat;}
+.icon-module{background-image:url(../images/icons/link.png)!important;background-repeat:no-repeat;}
+.icon-module_add{background-image:url(../images/icons/link_add.png)!important;background-repeat:no-repeat;}
+.icon-module_delete{background-image:url(../images/icons/link_delete.png)!important;background-repeat:no-repeat;}
+.icon-module_edit{background-image:url(../images/icons/link_edit.png)!important;background-repeat:no-repeat;}
+.icon-field{background-image:url(../images/icons/tag_blue.png)!important;background-repeat:no-repeat;}
+.icon-field_add{background-image:url(../images/icons/tag_blue_add.png)!important;background-repeat:no-repeat;}
+.icon-field_delete{background-image:url(../images/icons/tag_blue_delete.png)!important;background-repeat:no-repeat;}
+.icon-field_edit{background-image:url(../images/icons/tag_blue_edit.png)!important;background-repeat:no-repeat;}
+.icon-query{background-image:url(../images/icons/query.png)!important;background-repeat:no-repeat;}
+.icon-reset{background-image:url(../images/icons/reset.png)!important;background-repeat:no-repeat;}
+.icon-synchro{background-image:url(../images/icons/arrow_refresh.png)!important;background-repeat:no-repeat;}
